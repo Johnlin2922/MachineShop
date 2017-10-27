@@ -10,6 +10,8 @@
  * @author Johnny_Lin
  */
  
+package jsu.edu.mcis;
+ 
 public class MachineShop {
 
 	
