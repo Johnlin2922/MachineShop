@@ -11,7 +11,7 @@ public class Machine {
 	
 	private Queue<Task> waiting;
 	private String name;
-	private enum State
+	public enum State
 		{ ACTIVE, IDLE, CHANGEOVER };
 	private State currentState;
 	private Task currentTask;
@@ -23,9 +23,15 @@ public class Machine {
 	}
 	
 	public Machine(String n, int dt) {
+		waiting = new LinkedList<Task>();
 		name = n;
 		downtime = dt;
 		currentState = State.IDLE;
+		remainingTime = 0;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public void setDowntime(int dt) {
@@ -40,6 +46,10 @@ public class Machine {
 		return currentState;
 	}
 	
+	public int getRemainingTime() {
+		return remainingTime;
+	}
+	
 	public Task getCurrentTask() {
 		if(waiting.size() > 0) {
 			return currentTask;
@@ -49,6 +59,10 @@ public class Machine {
 	
 	public void addTask(Task t) {
 		waiting.add(t);
+	}
+	
+	public int getWaitingQueueSize() {
+		return waiting.size();
 	}
 	
 	public void start() {
