@@ -10,9 +10,9 @@ public class Task {
 		time = 0;
 	}
 	
-	public Task(String s, int t){
+	public Task(String s, String t){
 		name = s;
-		time = t;
+		time = Integer.parseInt(t);
 	}
 	
 	public String getName(){

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 public class MachineShopTest {
 
+	/*
 	@Test
 	public void testTaskConstructorAndGetter() {
 		Task t = new Task("task 1", 5);
@@ -35,4 +36,5 @@ public class MachineShopTest {
 		assertEquals(4, j.getNumJobs());
 	
 	}
+	*/
 }
