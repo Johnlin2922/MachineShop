@@ -40,4 +40,32 @@ public class MachineShop {
 		
 	}
 	
+	private boolean allMachinesDone() {
+		return false;
+	}
+	
+	private void init() {
+		Task temp;
+		
+		for(int i = 0; i < jobs.length; i++) {
+			temp = jobs[i].getNextTask();
+			for(int j = 0; j < machines.length; j++) {
+				if(temp.getName().equals(machines[i].getName())) {
+					machines[i].addTask(temp);
+				}
+			}
+		}
+	}
+	
+	private void tick() {
+		
+	}
+	
+	public void run() {
+		init();
+		while(!allMachinesDone()) {
+			
+		}
+	}
+	
 }
