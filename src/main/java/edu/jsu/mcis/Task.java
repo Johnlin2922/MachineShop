@@ -2,7 +2,7 @@ package edu.jsu.mcis;
 
 public class Task {
 	
-	private String name; 
+	private String name;
 	private int time;
 	
 	public Task(String s){
