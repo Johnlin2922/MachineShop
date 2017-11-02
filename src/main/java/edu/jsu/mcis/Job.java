@@ -7,11 +7,16 @@ public class Job {
 	private String name;
 	private Queue<Task> queue;
 	private int counter; 
+	private Task currentTask; 
 	
 	public Job(String n){
 		name = n;
 		queue = new LinkedList<Task>();
 		counter = 0; 
+	}
+	
+	public Task getCurrentTask(){
+		return currentTask; 
 	}
 	
 	public void addTask(Task t){
@@ -23,7 +28,9 @@ public class Job {
 	}
 	
 	public Task getNextTask(){
-		return queue.remove();
+		currentTask = queue.remove(); 
+		counter--; 
+		return currentTask;
 	}
 	
 	public boolean isFinished(){

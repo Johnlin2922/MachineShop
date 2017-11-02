@@ -19,6 +19,8 @@ public class MachineShop {
 	private Machine[] machines;
 	private Job[] jobs;
 	
+
+	
 	public MachineShop(Scanner data) {
 		machines = new Machine[data.nextInt()];
 		
@@ -41,6 +43,15 @@ public class MachineShop {
 	}
 	
 	private boolean allMachinesDone() {
+		int finishedCount = 0;  
+		for(int i = 0; i< machines.length; i++){
+			if(machines[i].getWaitingQueueSize() == 0){
+				finishedCount++; 
+			}
+		}
+		if(finishedCount == machines.length){
+			return true; 
+		}
 		return false;
 	}
 	
@@ -58,14 +69,17 @@ public class MachineShop {
 	}
 	
 	private void tick() {
-		
+		for(int i = 0; i < machines.length ; i++){
+			machines[i].tick();
+		}
 	}
 	
 	public void run() {
 		init();
 		while(!allMachinesDone()) {
-			
+			tick(); 
 		}
 	}
+	
 	
 }

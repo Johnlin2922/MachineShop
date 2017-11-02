@@ -17,6 +17,7 @@ public class Machine {
 	private Task currentTask;
 	private int downtime;
 	private int remainingTime;
+	private int size; 
 	
 	public Machine(String n) {
 		this(n, 0);
@@ -58,16 +59,18 @@ public class Machine {
 	}
 	
 	public void addTask(Task t) {
+		size++;
 		waiting.add(t);
 	}
 	
 	public int getWaitingQueueSize() {
-		return waiting.size();
+		return size;
 	}
 	
 	public void start() {
-		if(waiting.size() > 0) {
+		if(size > 0) {
 			currentTask = waiting.remove();
+			size--; 
 			remainingTime = currentTask.getTime();
 			currentState = State.ACTIVE;
 		}
@@ -84,7 +87,7 @@ public class Machine {
 			finish();
 		}
 		else if(remainingTime <= 0 && currentState == State.CHANGEOVER) {
-			if(waiting.size() > 0) {
+			if(size > 0) {
 				start();
 			}
 			else {
