@@ -10,12 +10,33 @@
  * @author Johnny_Lin
  */
  
-package jsu.edu.mcis;
+package edu.jsu.mcis;
+
+import java.util.*;
  
 public class MachineShop {
+	
+	private Machine[] machines;
 	private Job[] jobs;
 	
-	public MachineShop(Scanner input){
+	public MachineShop(Scanner data) {
+		machines = new Machine[data.nextInt()];
+		
+		for(int i = 0; i < machines.length; i++) {
+			machines[i] = new Machine(data.next(), data.nextInt());
+		}
+		
+		jobs = new Job[data.nextInt()];
+		String[] jobData;
+		
+		for(int i = 0; i < jobs.length; i++) {
+			jobData = data.nextLine().split(" ");
+			jobs[i] = new Job(jobData[0]);
+			
+			for(int j = 2; j < (jobData.length - 2); j+=2) {
+				jobs[i].addTask(new Task(jobData[i], jobData[i+1]));
+			}
+		}
 		
 	}
 	

@@ -4,10 +4,12 @@ import java.util.*;
 
 public class Job {
 	
+	private String name;
 	private Queue<Task> queue;
 	private int counter; 
 	
-	public Job(){
+	public Job(String n){
+		name = n;
 		queue = new LinkedList<Task>();
 		counter = 0; 
 	}
