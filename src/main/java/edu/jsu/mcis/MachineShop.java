@@ -13,7 +13,10 @@
 package jsu.edu.mcis;
  
 public class MachineShop {
-
+	private Job[] jobs;
 	
+	public MachineShop(Scanner input){
+		
+	}
 	
 }
