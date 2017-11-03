@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.MachineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-11-01T00:19:15" hostname="PierceMobile" time="0.032">
+<testsuite name="edu.jsu.mcis.MachineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-11-02T23:57:28" hostname="DESKTOP-7HJH46U" time="0.0">
   <properties/>
-  <testcase name="testAddTaskAddsTask" classname="edu.jsu.mcis.MachineTest" time="0.016"/>
+  <testcase name="testAddTaskAddsTask" classname="edu.jsu.mcis.MachineTest" time="0.0"/>
   <testcase name="testCreateMachineNameAndDowntime" classname="edu.jsu.mcis.MachineTest" time="0.0"/>
   <testcase name="testSetDowntimeSetsDowntime" classname="edu.jsu.mcis.MachineTest" time="0.0"/>
   <testcase name="testCreateMachineNameOnly" classname="edu.jsu.mcis.MachineTest" time="0.0"/>
