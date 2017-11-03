@@ -18,6 +18,7 @@ public class Machine {
 	private int downtime;
 	private int remainingTime;
 	private int size; 
+	private boolean isFinished;
 	
 	public Machine(String n) {
 		this(n, 0);
@@ -29,6 +30,7 @@ public class Machine {
 		downtime = dt;
 		currentState = State.IDLE;
 		remainingTime = 0;
+		isFinished = false;
 	}
 	
 	public String getName() {
@@ -67,6 +69,10 @@ public class Machine {
 		return size;
 	}
 	
+	public boolean isTaskFinished() {
+		return isFinished;
+	}
+	
 	public void start() {
 		if(size > 0) {
 			currentTask = waiting.remove();
@@ -85,6 +91,7 @@ public class Machine {
 		remainingTime--;
 		if(remainingTime <= 0 && currentState == State.ACTIVE) {
 			finish();
+			isFinished = true;
 		}
 		else if(remainingTime <= 0 && currentState == State.CHANGEOVER) {
 			if(size > 0) {
@@ -93,6 +100,7 @@ public class Machine {
 			else {
 				currentState = State.IDLE;
 			}
+			isFinished = false;
 		}
 	}
 	

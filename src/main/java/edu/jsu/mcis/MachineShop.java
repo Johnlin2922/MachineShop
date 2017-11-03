@@ -1,7 +1,7 @@
 /**
  * MachineShop.Java
  *
- * MachineShop is a class that applies Jobs to a set of Machines. </p>
+ * MachineShop is a class that applies Jobs to a set of Machines.
  * MachineShop also organizes applicable Machines, and keeps track
  * of the states of the Machines, using a Clock.
  * 
@@ -71,6 +71,18 @@ public class MachineShop {
 	private void tick() {
 		for(int i = 0; i < machines.length ; i++){
 			machines[i].tick();
+			if(machines[i].isTaskFinished()) {
+				for(int j = 0; j < jobs.length; j++) {
+					if(jobs[j].getCurrentTask() == machines[i].getCurrentTask() && jobs[j].getNumJobs() > 0) {
+						Task temp = jobs[j].getNextTask();
+						for(int k = 0; k < machines.length; k++) {
+							if(temp.getName().equals(machines[i].getName())) {
+								machines[i].addTask(temp);
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	
