@@ -14,6 +14,7 @@ public class Main {
 			System.out.println("Time,Machine Queues, Active Jobs, Finished Times");
 			int counter = 0; 
 			shop.init(); 
+			System.out.println("Hello");
 			while(!shop.allMachinesDone()){
 				System.out.println(shop.toString());
 			}

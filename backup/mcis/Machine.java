@@ -3,8 +3,8 @@
  * given by Jobs.
  */
  
-
 package edu.jsu.mcis;
+ 
 import java.util.*; 
  
 public class Machine {
@@ -57,9 +57,7 @@ public class Machine {
 		if(waiting.size() > 0) {
 			return currentTask;
 		}
-		else{
-			return new Task("-", "0");
-		}
+		else return null;
 	}
 	
 	public void addTask(Task t) {
@@ -106,12 +104,4 @@ public class Machine {
 		}
 	}
 	
-	public String getWaitingList(){
-		String rep = "";
-		Queue temp = waiting; 
-		for(int i = 0; i < temp.size(); i++){
-			rep += temp.remove().toString() + ","; 
-		}
-		return rep; 
-	}
 }

@@ -28,11 +28,9 @@ public class Job {
 	}
 	
 	public Task getNextTask(){
-		
 		currentTask = queue.remove(); 
-		counter--;
+		counter--; 
 		return currentTask;
-	
 	}
 	
 	public boolean isFinished(){

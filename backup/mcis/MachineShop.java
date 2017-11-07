@@ -11,6 +11,7 @@
  */
  
 package edu.jsu.mcis;
+
 import java.util.*;
  
 public class MachineShop {
@@ -21,25 +22,25 @@ public class MachineShop {
 
 	
 	public MachineShop(Scanner data) {
-		machines = new Machine[Integer.parseInt(data.nextLine())];
+		machines = new Machine[data.nextInt()];
 		
 		for(int i = 0; i < machines.length; i++) {
-			String[] arr = data.nextLine().split("\\s+");
-			machines[i] = new Machine(arr[0], Integer.parseInt(arr[1]));
+			machines[i] = new Machine(data.next(), data.nextInt());
 		}
 		
 		jobs = new Job[data.nextInt()];
 		String[] jobData;
-		data.nextLine();
+		
 		for(int i = 0; i < jobs.length; i++) {
-			jobData = data.nextLine().split("\\s+");
+			jobData = data.nextLine().split(" ");
 			jobs[i] = new Job(jobData[0]);
 			
 			for(int j = 2; j < (jobData.length - 2); j+=2) {
-				jobs[i].addTask(new Task(jobData[j], jobData[j+1]));
+				jobs[i].addTask(new Task(jobData[i], jobData[i+1]));
 			}
 		}
 		time = 0; 
+		
 	}
 	
 	public boolean allMachinesDone() {
@@ -58,7 +59,7 @@ public class MachineShop {
 	public void init() {
 		Task temp;
 		
-		for(int i = 0; i < 1; i++) {
+		for(int i = 0; i < jobs.length; i++) {
 			temp = jobs[i].getNextTask();
 			for(int j = 0; j < machines.length; j++) {
 				if(temp.getName().equals(machines[i].getName())) {
@@ -97,7 +98,10 @@ public class MachineShop {
 		String representation = ""; 
 		representation += time + "|";
 		for(int i = 0; i < machines.length; i++){
-			representation += machines[i].getWaitingList() + "|";
+			for(int j = 0; j < machines[i].getWaitingQueueSize(); i++){
+				representation += machines[i].getCurrentTask().getName() + ", "; 
+			}
+		representation += "|";
 		}
 		
 		return representation; 
