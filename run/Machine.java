@@ -30,6 +30,7 @@ public class Machine {
 		currentState = State.IDLE;
 		remainingTime = 0;
 		isFinished = false;
+		currentTask = null; 
 	}
 	
 	public String getName() {
@@ -57,7 +58,7 @@ public class Machine {
 			return currentTask;
 		}
 		else{
-			return new Task("-", "0");
+			return new Task("-", "0", "none");
 		}
 	}
 	
@@ -86,6 +87,7 @@ public class Machine {
 	public void finish() {
 		currentState = State.CHANGEOVER;
 		remainingTime = downtime;
+		currentTask = null; 
 	}
 	
 	public void tick() {
@@ -100,17 +102,31 @@ public class Machine {
 			}
 			else {
 				currentState = State.IDLE;
+				currentTask = null; 
 			}
 			isFinished = false;
 		}
 	}
 	
 	public String getWaitingList(){
-		String rep = "";
-		Queue temp = waiting; 
-		for(int i = 0; i < size; i++){
-			rep += temp.remove().toString() + ","; 
+		try{
+			String rep = "";
+			Queue temp = waiting; 
+			for(int i = 0; i < size; i++){
+				rep += temp.remove().toString() + ","; 
+			}
+			return rep;
+		}catch(NoSuchElementException e){
+			e.getMessage(); 
+			System.out.println("you ran into the end of the queue WTF!");
 		}
-		return rep; 
+		return rep;
+	}
+	
+	public String getCurrentActiveJob(){
+		if(currentTask != null){
+			return currentTask.toString(); 
+		}
+		return "l"; 
 	}
 }

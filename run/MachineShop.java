@@ -104,6 +104,10 @@ public class MachineShop {
 			representation += machines[i].getWaitingList() + "|";
 		}
 		
+		for(int i = 0; i < machines.length; i++){
+			representation += machines[i].getCurrentActiveJob() + "|";
+		}
+		
 		return representation; 
 	}
 	
