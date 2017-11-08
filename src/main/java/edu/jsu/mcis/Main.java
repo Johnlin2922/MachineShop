@@ -13,10 +13,11 @@ public class Main {
 			shop = new MachineShop(s);
 			System.out.println("Time,Machine Queues, Active Jobs, Finished Times");
 			int counter = 0; 
-			shop.init(); 
-			while(!shop.allMachinesDone()){
-				System.out.println(shop.toString());
-			}
+			//shop.init(); 
+			//while(!shop.allMachinesDone()){
+			//	System.out.println(shop.toString());
+			//}
+			
 		}
 		catch (FileNotFoundException e){
 			e.getMessage();
