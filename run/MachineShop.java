@@ -34,8 +34,8 @@ public class MachineShop {
 			jobData = data.nextLine().split("\\s+");
 			jobs[i] = new Job(jobData[0]);
 			
-			for(int j = 2; j < (jobData.length - 2); j+=2) {
-				jobs[i].addTask(new Task(jobData[j], jobData[j+1]));
+			for(int j = 2; j < (jobData.length); j+=2) {
+				jobs[i].addTask(new Task(jobData[j], jobData[j+1], jobData[0]));
 			}
 		}
 		time = 0; 
@@ -57,17 +57,18 @@ public class MachineShop {
 	public void init() {
 		Task temp;
 		
-		for(int i = 0; i < 1; i++) {
+		for(int i = 0; i < jobs.length; i++) {
 			temp = jobs[i].getNextTask();
 			for(int j = 0; j < machines.length; j++) {
-				if(temp.getName().equals(machines[i].getName())) {
-					machines[i].addTask(temp);
+				if(temp.getName().equals(machines[j].getName())) {
+					machines[j].addTask(temp);
 				}
 			}
 		}
 	}
 	
 	private void tick() {
+		time++;
 		for(int i = 0; i < machines.length ; i++){
 			machines[i].tick();
 			if(machines[i].isTaskFinished()) {
@@ -87,8 +88,12 @@ public class MachineShop {
 	
 	public void run() {
 		init();
-		while(!allMachinesDone()) {
+		int counter = 10; 
+		while(counter > 0) {
+			counter--;
 			tick(); 
+			System.out.println(toString());
+			
 		}
 	}
 	
